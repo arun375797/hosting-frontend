@@ -84,7 +84,7 @@ const StudentProjects = () => {
 
     const getUser = async (email) => {
         try {
-            const user = await axiosInstance.get(`http://localhost:5000/api/student/user?email=${email}`);
+            const user = await axiosInstance.get(`https://hosting-project.onrender.com/api/student/user?email=${email}`);
             setUser(user.data);
             setError(null);
         } catch (error) {
@@ -96,7 +96,7 @@ const StudentProjects = () => {
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const response = await axiosInstance.get('http://localhost:5000/api/project/get');
+                const response = await axiosInstance.get('https://hosting-project.onrender.com/api/project/get');
                 setProjects(response.data.projects);
             } catch (error) {
                 console.error('Error fetching projects:', error);
@@ -111,7 +111,7 @@ const StudentProjects = () => {
             alert("You have already selected a project");
         } else {
             try {
-                const response = await axiosInstance.post('http://localhost:5000/api/studentProjects/add', {
+                const response = await axiosInstance.post('https://hosting-project.onrender.com/api/studentProjects/add', {
                     projectId: project._id,
                     title: project.title,
                     studentId: user._id,

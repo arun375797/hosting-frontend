@@ -50,7 +50,7 @@ const Demo = () => {
           );
         } else {
           const response = await axiosInstance.post(
-            "http://localhost:5000/api/student/weekly-submission",
+            "https://hosting-project.onrender.com/api/student/weekly-submission",
             { data: formData }
           );
           console.log(response.data); // Log the response from the backend

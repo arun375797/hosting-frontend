@@ -19,7 +19,7 @@ const Login = () => {
   
   const addHandler = () => {
     axios
-      .post("http://localhost:5000/api/student/login", user)
+      .post("https://hosting-project.onrender.com/api/student/login", user)
       .then((res) => {
         if (res.data.message === "Login success") {
           alert(res.data.message);

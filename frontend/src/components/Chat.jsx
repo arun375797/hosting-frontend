@@ -16,7 +16,7 @@ const Chat = () => {
   useEffect(() => {
       const getUser = async () => {
           try {
-              const response = await axiosInstance.get(`http://localhost:5000/api/student/user?email=${userEmail}`);
+              const response = await axiosInstance.get(`https://hosting-project.onrender.com/api/student/user?email=${userEmail}`);
               setUser(response.data);
               setError(null);
           } catch (error) {
@@ -35,14 +35,14 @@ const Chat = () => {
 
   const fetchChatHistory = async () => {
     try {
-      const response = await axiosInstance.get("http://localhost:5000/api/student/chat-messages");
+      const response = await axiosInstance.get("https://hosting-project.onrender.com/api/student/chat-messages");
       setShowCommentField(new Array(response.data.length).fill(false));
       setChatHistory(response.data);
       
       // Fetch sender names for each message
       const chatMessages = response.data;
       for (let message of chatMessages) {
-        const senderResponse = await axiosInstance.get(`http://localhost:5000/api/student/user?email=${message.sender}`);
+        const senderResponse = await axiosInstance.get(`https://hosting-project.onrender.com/api/student/user?email=${message.sender}`);
         message.senderName = senderResponse.data.name;
       }
     } catch (error) {
@@ -62,7 +62,7 @@ const Chat = () => {
   // Send a chat message
 const handleSendChatMessage = async () => {
   try {
-    const response = await axiosInstance.post("http://localhost:5000/api/student/chat-messages", { 
+    const response = await axiosInstance.post("https://hosting-project.onrender.com/api/student/chat-messages", { 
       message: chatMessage,
       sender: user  // Include the sender's information
     });
@@ -77,7 +77,7 @@ const handleSendChatMessage = async () => {
 // Send a comment message
 const handleSendCommentMessage = async (index, commentMessage) => {
   try {
-    const response = await axiosInstance.post(`http://localhost:5000/api/student/chat-messages/${chatHistory[index]._id}/comments`, { 
+    const response = await axiosInstance.post(`https://hosting-project.onrender.com/api/student/chat-messages/${chatHistory[index]._id}/comments`, { 
       comment: commentMessage,
       sender: user  // Include the sender's information
     });
@@ -97,7 +97,7 @@ const handleSendCommentMessage = async (index, commentMessage) => {
 
   const handleDeleteMessage = async (index) => {
     try {
-      await axiosInstance.delete(`http://localhost:5000/api/student/chat-messages/${chatHistory[index]._id}`);
+      await axiosInstance.delete(`https://hosting-project.onrender.com/api/student/chat-messages/${chatHistory[index]._id}`);
       const updatedChatHistory = [...chatHistory];
       updatedChatHistory.splice(index, 1);
       setChatHistory(updatedChatHistory);
@@ -113,7 +113,7 @@ const handleSendCommentMessage = async (index, commentMessage) => {
 
   const handleSaveEdit = async (index) => {
     try {
-      await axiosInstance.put(`http://localhost:5000/api/student/chat-messages/${chatHistory[index]._id}`, { message: editMessage });
+      await axiosInstance.put(`https://hosting-project.onrender.com/api/student/chat-messages/${chatHistory[index]._id}`, { message: editMessage });
       const updatedChatHistory = [...chatHistory];
       updatedChatHistory[index].message = editMessage; 
       setChatHistory(updatedChatHistory);
