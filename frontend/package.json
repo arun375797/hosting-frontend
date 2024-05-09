@@ -18,8 +18,8 @@
     "buffer": "^6.0.3",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
 
     "react-icons": "^4.3.1",
     "react-pro-sidebar": "^0.7.0",
