@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate, Link as RouterLink, useNavigate } from 'react-router-dom';
-import { Link } from '@material-ui/core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+
+
+import { Link } from "react-router-dom"; // Import useNavigate
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
@@ -74,7 +74,7 @@ const MainComponent = () => {
             <div style={{ display: 'flex' }}>
                 <div style={{ width: '50px', background: "#0f054c", padding: '10px' }}>
                     <button onClick={toggleToolbarVisibility} style={{ marginBottom: '10px', background: "#0f054c", border: 'none', width: '100%' }}>
-                        <FontAwesomeIcon icon={faBars} style={{ color: '#ffffff' }} />
+                      
                     </button>
                 </div>
                 {isToolbarVisible && (

@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { Button, Typography, Link ,IconButton, InputAdornment} from "@mui/material";
+import { Button, Typography ,IconButton, InputAdornment} from "@mui/material";
 import { Link as RouterLink,useNavigate} from "react-router-dom";
+import { Link} from "react-router-dom"; // Import useNavigate
 import axios from "axios";
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
@@ -19,7 +20,7 @@ const Login = () => {
   
   const addHandler = () => {
     axios
-      .post("http://localhost:5000/api/student/login", user)
+      .post("https://hosting-project.onrender.com/api/student/login", user)
       .then((res) => {
         if (res.data.message === "Login success") {
           alert(res.data.message);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography, Link, Grid, Card, CardContent, Button } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
+import { AppBar, Toolbar, Typography, Link, Grid, Card, CardContent, Button} from '@mui/material';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import axiosInstance from '../axiosinterceptor';
 
@@ -20,10 +20,10 @@ const projectsOtherData = [
     { image: proImg6, link: '/readmore' },
 ];
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
     root: {
         minWidth: 275,
-        margin: theme.spacing(2),
+        margin: '16px',
         backgroundColor: '#231a6f',
         color: '#fff',
         transition: 'transform 0.2s',
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     },
     description: {
         fontSize: 16,
-        marginTop: theme.spacing(1),
+        marginTop: '8px',
     },
     media: {
         height: 140,
@@ -50,23 +50,17 @@ const useStyles = makeStyles((theme) => ({
     },
     appBar: {
         backgroundColor: '#231a6f',
-        [theme.breakpoints.down('sm')]: {
-            flexDirection: 'column',
-        },
     },
     titleTypography: {
         flexGrow: 1,
         textAlign: 'center',
-        [theme.breakpoints.down('sm')]: {
-            textAlign: 'left',
-        },
     },
     toolbar: {
-        [theme.breakpoints.down('sm')]: {
-            display: 'block',
-        },
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
     },
-}));
+});
 
 const StudentProjects = () => {
     const navigate = useNavigate();
@@ -84,7 +78,7 @@ const StudentProjects = () => {
 
     const getUser = async (email) => {
         try {
-            const user = await axiosInstance.get(`http://localhost:5000/api/student/user?email=${email}`);
+            const user = await axiosInstance.get(`https://hosting-project.onrender.com/api/student/user?email=${email}`);
             setUser(user.data);
             setError(null);
         } catch (error) {
@@ -96,7 +90,7 @@ const StudentProjects = () => {
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const response = await axiosInstance.get('http://localhost:5000/api/project/get');
+                const response = await axiosInstance.get('https://hosting-project.onrender.com/api/project/get');
                 setProjects(response.data.projects);
             } catch (error) {
                 console.error('Error fetching projects:', error);
@@ -111,7 +105,7 @@ const StudentProjects = () => {
             alert("You have already selected a project");
         } else {
             try {
-                const response = await axiosInstance.post('http://localhost:5000/api/studentProjects/add', {
+                const response = await axiosInstance.post('https://hosting-project.onrender.com/api/studentProjects/add', {
                     projectId: project._id,
                     title: project.title,
                     studentId: user._id,
@@ -142,10 +136,10 @@ const StudentProjects = () => {
                     <a className="navbar-brand" href="index.html">
                         <img src="images/logo.png" alt="" style={{ height: "50px" }} />
                     </a>
-                    <Typography variant="h6" className={classes.titleTypography}style={{ textAlign:'center' }}>
+                    <Typography variant="h6" className={classes.titleTypography}>
                         Welcome, {user && user.name.toUpperCase()}
                     </Typography>
-                    <Link component={RouterLink} to="/main" color="inherit" style={{ marginRight: '25px' }}>
+                    <Link component={RouterLink} to="/main" color="inherit">
                         Project-Dashboard
                     </Link>
                     <Link component={RouterLink} to="/login" color="inherit" onClick={tokenrelease}>
@@ -187,6 +181,4 @@ const StudentProjects = () => {
     );
 };
 
-
-
-    export default StudentProjects;
+export default StudentProjects;

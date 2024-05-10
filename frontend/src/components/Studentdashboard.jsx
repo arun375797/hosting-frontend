@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography, Link, Grid, Card, CardContent, Button } from '@material-ui/core';
+import makeStyles from '@mui/styles/makeStyles';
+import { AppBar, Toolbar, Typography, Link, Grid, Card, CardContent, Button } from '@mui/material';
 import { Navigate, Link as RouterLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import axiosInstance from '../axiosinterceptor';
@@ -76,7 +76,7 @@ const Studentdashboard = () => {
 
   const getUser = async (email) => {
     try {
-      const user = await axiosInstance.get(`http://localhost:5000/api/student/user?email=${email}`);
+      const user = await axiosInstance.get(`https://hosting-project.onrender.com/api/student/user?email=${email}`);
       console.log(user.data)
       setUser(user.data);
       setError(null);
@@ -93,7 +93,7 @@ const Studentdashboard = () => {
     // Fetch projects from backend when component mounts
     const fetchProjects = async () => {
       try {
-        const response = await axiosInstance.get('http://localhost:5000/api/project/get');
+        const response = await axiosInstance.get('https://hosting-project.onrender.com/api/project/get');
         setProjects(response.data.projects);
       } catch (error) {
         console.error('Error fetching projects:', error);
@@ -111,7 +111,7 @@ const Studentdashboard = () => {
     console.log('User logged in:', user._id);
 
     try {
-      const response = await axiosInstance.post('http://localhost:5000/api/studentProjects/add', {
+      const response = await axiosInstance.post('https://hosting-project.onrender.com/api/studentProjects/add', {
         projectId: project._id,
         title: project.title,
         studentId: user._id,

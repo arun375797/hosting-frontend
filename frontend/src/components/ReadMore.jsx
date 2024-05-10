@@ -8,7 +8,8 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import { Box } from '@material-ui/core';
+import Box from '@mui/material/Box';
+
 
 const ReadMore = () => {
     const { projectId } = useParams();
@@ -17,7 +18,7 @@ const ReadMore = () => {
     useEffect(() => {
         const fetchProjectData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/project/${projectId}`);
+                const response = await axios.get(`https://hosting-project.onrender.com/api/project/${projectId}`);
                 setProjectData(response.data.project);
             } catch (error) {
                 console.error('Error fetching project data:', error);

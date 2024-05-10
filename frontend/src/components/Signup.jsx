@@ -89,7 +89,7 @@ const Signup = () => {
 
   const addHandler = () => {
     if (validateInputs()) {
-      axios.post("http://localhost:5000/api/student/register", users)
+      axios.post("https://hosting-project.onrender.com/api/student/register", users)
         .then((res) => {
           console.log(res);
           alert(res.data.message);
