@@ -19,7 +19,7 @@ const Profile = () => {
 
     const getUser = async (email) => {
         try {
-            const response = await axios.get(`https://hosting-project.onrender.com/api/student/user?email=${email}`);
+            const response = await axios.get(`http://localhost:5000/api/student/user?email=${email}`);
             setUser(response.data);
             setError(null);
         } catch (error) {

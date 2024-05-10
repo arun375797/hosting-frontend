@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Navigate, Link as RouterLink, useNavigate } from 'react-router-dom';
-
+import { Navigate, Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Link } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { useTheme } from '@mui/material/styles';

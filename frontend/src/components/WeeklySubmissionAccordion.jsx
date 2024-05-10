@@ -18,7 +18,7 @@ const WeeklySubmissionForm = () => {
             if (userEmail) {
                 try {
                     const response = await axiosInstance.get(
-                        `https://hosting-project.onrender.com/api/student/user?email=${userEmail}`
+                        `http://localhost:5000/api/student/user?email=${userEmail}`
                     );
                     setUser(response.data);
                 } catch (error) {
@@ -34,7 +34,7 @@ const WeeklySubmissionForm = () => {
         const fetchProject = async () => {
             if (user && user._id) {
                 try {
-                    const response = await axiosInstance.get(`hhttps://hosting-project.onrender.com/api/studentProjects/id/${user._id}`);
+                    const response = await axiosInstance.get(`http://localhost:5000/api/studentProjects/id/${user._id}`);
                     // Assuming the response is an array and contains a single project object
                     if (response.data.length > 0) {
                         setProject(response.data[0]); // Set the first project object in the array
@@ -86,7 +86,7 @@ const WeeklySubmissionForm = () => {
                     );
                 } else {
                     const response = await axiosInstance.post(
-                        "https://hosting-project.onrender.com/api/student/weekly-submission",
+                        "http://localhost:5000/api/student/weekly-submission",
                         {
                             data: formData,
                             userName: user ? user.name : "", // Include user's name in the submission

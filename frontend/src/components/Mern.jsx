@@ -34,7 +34,7 @@ const Mern = () => {
       // const currentDay='Sun Apr 29 2024 21:43:20 GMT+0530 (India Standard Time)';
       // Check if it's Saturday (day 6) or Sunday (day 0)
       if (currentDay === 6 || currentDay === 0) {
-        const response = await axiosInstance.post("https://hosting-project.onrender.com/api/student/weekly-submission", { data: formData });
+        const response = await axiosInstance.post("http://localhost:5000/api/student/weekly-submission", { data: formData });
         console.log(response.data); // Log the response from the backend
       } else {
         alert("Weekly submission is only allowed on weekends."); // Inform the user that submission is only allowed on weekends

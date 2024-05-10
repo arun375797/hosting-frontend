@@ -31,7 +31,7 @@ const Grades = () => {
         // Fetch user data
         const getUser = async () => {
             try {
-                const response = await axiosInstance.get(`https://hosting-project.onrender.com/api/student/user?email=${userEmail}`);
+                const response = await axiosInstance.get(`http://localhost:5000/api/student/user?email=${userEmail}`);
                 setUser(response.data);
             } catch (error) {
                 console.error('Error fetching user data:', error);
@@ -48,7 +48,7 @@ const Grades = () => {
         const fetchProject = async () => {
             if (user && user._id) {
                 try {
-                    const response = await axiosInstance.get(`https://hosting-project.onrender.com/api/studentProjects/id/${user._id}`);
+                    const response = await axiosInstance.get(`http://localhost:5000/api/studentProjects/id/${user._id}`);
                     if (response.data.length > 0) {
                         setProjectTitle(response.data[0].title);
                         setError(null);
